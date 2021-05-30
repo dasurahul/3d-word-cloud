@@ -10,19 +10,16 @@ function App() {
         name: "rahul",
         id: "0",
         url: "https://www.facebook.com/rahuldravid",
-        color: "blue",
       },
       {
         name: "virat",
         id: "1",
         url: "https://www.facebook.com/virat.kohli",
-        color: "red",
       },
       {
         name: "sachin",
         id: "2",
         url: "https://www.facebook.com/SachinTendulkar/",
-        color: "green",
       },
     ],
     links: [
@@ -35,6 +32,8 @@ function App() {
   useEffect(() => {
     myGraph(document.getElementById("3d-graph"))
       .graphData(data)
+      .showNavInfo(false)
+      .nodeAutoColorBy("id")
       .onNodeClick((node) => {
         window.location.href = node.url;
       })
