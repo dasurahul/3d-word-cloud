@@ -1,10 +1,10 @@
 import "./App.css";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ForceGraph3D from "3d-force-graph";
 import SpriteText from "three-spritetext";
 function App() {
   const myGraph = ForceGraph3D();
-  const data = {
+  const [data, setData] = useState({
     nodes: [
       {
         name: "rahul",
@@ -27,7 +27,7 @@ function App() {
       { source: "1", target: "2" },
       { source: "0", target: "1" },
     ],
-  };
+  });
 
   useEffect(() => {
     myGraph(document.getElementById("3d-graph"))
