@@ -2,21 +2,46 @@ import "./App.css";
 import React, { useEffect } from "react";
 import ForceGraph3D from "3d-force-graph";
 import SpriteText from "three-spritetext";
-import * as THREE from "three";
 function App() {
   const myGraph = ForceGraph3D();
   const data = {
-    nodes: [{ name: "rahul" }, { name: "virat" }],
-    links: [],
+    nodes: [
+      {
+        name: "rahul",
+        id: "0",
+        url: "https://www.facebook.com/rahuldravid",
+        color: "blue",
+      },
+      {
+        name: "virat",
+        id: "1",
+        url: "https://www.facebook.com/virat.kohli",
+        color: "red",
+      },
+      {
+        name: "sachin",
+        id: "2",
+        url: "https://www.facebook.com/SachinTendulkar/",
+        color: "green",
+      },
+    ],
+    links: [
+      { source: "0", target: "2" },
+      { source: "1", target: "2" },
+      { source: "0", target: "1" },
+    ],
   };
 
   useEffect(() => {
     myGraph(document.getElementById("3d-graph"))
       .graphData(data)
+      .onNodeClick((node) => {
+        window.location.href = node.url;
+      })
       .nodeThreeObject((node) => {
         const sprite = new SpriteText(node.name);
         sprite.material.depthWrite = false; // make sprite background transparent
-        sprite.color = "white";
+        sprite.color = node.color;
         sprite.textHeight = 8;
         return sprite;
       });
