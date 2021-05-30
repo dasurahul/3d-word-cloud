@@ -4,7 +4,7 @@ import ForceGraph3D from "3d-force-graph";
 import SpriteText from "three-spritetext";
 function App() {
   const myGraph = ForceGraph3D();
-  const [data, setData] = useState({
+  const [data] = useState({
     nodes: [
       {
         name: "rahul",
